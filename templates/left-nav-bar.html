@@ -1,0 +1,17 @@
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    {% for app in APPS %}
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="{{ app|title }}">
+            <a class="nav-link" href="{% url app|add:':index' %}"{% if app in request.path %} style="color: white"{% endif %}>
+                {% include app|add:'/icon.html' %}
+                <span class="nav-link-text">{{ app|title|cut:"_" }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+<ul class="navbar-nav sidenav-toggler">
+    <li class="nav-item">
+        <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+        </a>
+    </li>
+</ul>
