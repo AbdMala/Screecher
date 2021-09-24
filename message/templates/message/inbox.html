@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+    {% load profile_extras %}
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher active" href="{% url 'message:index' %}">Inbox</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher" href="{% url 'message:outbox' %}">Outbox</a>
+        </li>
+    </ul>
+
+    <br>
+
+    {% for m in received_messages %}
+        {% if not m.ignored %}
+            <div class="card" style="{% if m.read %}opacity: 0.5{% endif %}">
+                <div class="card-header card-header-screecher">
+                    <div>
+                        <img class="profile-pic" src="{{ PROFILE_PICTURES|get:m.sender.id }}">
+                        {{ m.sender.get_full_name }} sent:
+                    </div>
+                    <i>{{ m.timestamp }}</i>
+                </div>
+                <div class="card-body">{{ m.content|linebreaksbr }}</div>
+                <div class="card-footer">
+                    <form name="delete" id="Form{{ m.id }}" method="POST">
+                        <input type="hidden" name="id" value="{{ m.id }}"/>
+                        <button id="ReplyBtn{{ m.id }}" class="btn btn-screecher ReplyBtn">
+                            Reply
+                        </button>
+                        {% if not m.read %}
+                            <button id="ReadBtn{{ m.id }}" class="btn btn-screecher ReadBtn">
+                                Mark as read
+                            </button>
+                        {% else %}
+                            <button id="RemoveBtn{{ m.id }}" class="btn btn-danger RemoveBtn">
+                                <i class="fa fa-fw fa-trash"></i>
+                            </button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+            <br>
+        {% endif %}
+    {% endfor %}
+
+    <script src="{% static 'message/js/inbox_utils.js' %}"></script>
+
+{% endblock %}

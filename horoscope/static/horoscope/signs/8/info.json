@@ -1,0 +1,11 @@
+{
+	"id": 8,
+	"description": "Your aim today is to protect and raise those that will come after you: the next generation of young, beautiful owls. These owl are still inexperienced or maybe not even born yet. You take the time to give them all the wisdom and knowledge you have assembled over your many owl years to enrich their mind and help them becoming as great an owl as you are.",
+	"name": "Nest",
+		"stats": {
+		"Luck": 7,
+		"Insight": 6,
+		"Owlyness": 8,
+		"Love": 6
+	}
+}

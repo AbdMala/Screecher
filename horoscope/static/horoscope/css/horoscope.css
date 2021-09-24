@@ -1,0 +1,24 @@
+img.sign {
+    width: 300px;
+    height: 300px;
+    border: 1px solid white;
+}
+
+.horoscope {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.horoscope-header {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.progress-bar-screecher {
+    background-color: #343a40 !important;
+}
+

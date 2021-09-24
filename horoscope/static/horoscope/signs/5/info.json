@@ -1,0 +1,11 @@
+{
+	"id": 5,
+	"name": "Fertility",
+	"description": "You feel extremely connected to your fellow owls today. You would like to share as much love with them as possible, since you are completely overflowing with it. Sharing your feelings with others will give you and them great happiness.",
+		"stats": {
+		"Luck": 6,
+		"Insight": 2,
+		"Owlyness": 9,
+		"Love": 9
+	}
+}

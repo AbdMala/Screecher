@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+
+    <link href="{% static 'horoscope/css/horoscope.css' %}" rel="stylesheet">
+
+    <div class="horoscope-header">
+        <h1>Welcome to the horoscope!</h1>
+        <h4>Please select a sign to view its details.</h4>
+
+        <br>
+
+        <form action="{% url 'horoscope:personal' %}" method="POST">
+            <button class="btn btn-screecher">
+                <i class="fa fa-star" style="color: gold;"></i>
+                Personal Sign
+                <i class="fa fa-star" style="color: gold;"></i>
+            </button>
+        </form>
+    </div>
+    <br>
+    <div class="horoscope">
+        {% for id in signs %}
+            <div>
+                <a href="{% url 'horoscope:sign' sign_id=id %}">
+                    <img class="sign" src="{% get_static_prefix %}horoscope/signs/{{ id }}/sign.png" alt="Sign Picture">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

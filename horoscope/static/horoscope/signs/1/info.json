@@ -1,0 +1,11 @@
+{
+	"id": 1,
+	"name": "Big Peck",
+	"description": "You can feel a lot of power coming from your owly peck today. Indeed, it seems as if it has even grown bigger! Today, you might well be able to eat thrice the amount of meat you normally consume.",
+		"stats": {
+		"Luck": 4,
+		"Insight": 3,
+		"Owlyness": 7,
+		"Love": 7
+	}
+}

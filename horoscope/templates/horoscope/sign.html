@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+
+    <link href="{% static 'horoscope/css/horoscope.css' %}" rel="stylesheet">
+
+    <div class="d-flex justify-content-center">
+        <div style="text-align: center;">
+            <h2>The {{ sign.name }}</h2>
+            <br>
+            <img src="{% get_static_prefix %}horoscope/signs/{{ sign.id }}/sign.png">
+        </div>
+    </div>
+    <br>
+    <p style="text-align: center">
+        {{ sign.description }}
+    </p>
+    <br>
+    <h5>Current properties of this sign:</h5>
+    <br>
+    {% for key, value in sign.stats.items %}
+        <div class="progress" style="height: 3vh">
+            <div class="progress-bar progress-bar-screecher" role="progressbar" aria-valuenow="{{ value }}"
+                 aria-valuemin="1"
+                 aria-valuemax="9">{{ key }}
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <a href="back_url" class="btn btn-screecher">
+            Back to the Overview
+        </a>
+    </div>
+
+    <script src="{% static 'horoscope/js/utils.js' %}"></script>
+
+{% endblock %}

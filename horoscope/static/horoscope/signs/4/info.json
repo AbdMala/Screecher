@@ -1,0 +1,11 @@
+{
+	"id": 4,
+	"name": "Bread Crumbs",
+	"description": "Luck lies scattered in front of you. All you need to do is move forward and peck it to achieve happiness like you have felt never before. Perhaps you could even win the lottery today or by pure chance have your peck collide with the peck of another lovely owl.",
+		"stats": {
+		"Luck": 8,
+		"Insight": 3,
+		"Owlyness": 6,
+		"Love": 8
+	}
+}

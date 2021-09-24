@@ -1,0 +1,11 @@
+{
+	"id": 7,
+	"name": "Swarm",
+	"description": "You profit a lot from the company of your fellow owls. Not only do you spend precious time with them, but you also learn from their individual wisdom, making you a better owl overall. You do not take this blessing for granted and instead thank the owl gods for their generous effort to improve your life.",
+		"stats": {
+		"Luck": 4,
+		"Insight": 6,
+		"Owlyness": 9,
+		"Love": 7
+	}
+}

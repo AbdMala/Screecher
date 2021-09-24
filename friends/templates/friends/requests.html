@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher" href="{% url 'friends:index' %}">Friendlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher active" href="{% url 'friends:requests' %}">Outgoing requests</a>
+        </li>
+    </ul>
+
+    <div class="card">
+        <div class="card-header">
+            Send a friend request:
+        </div>
+        <div class="card-body">
+            <form id="addFriendForm" action="{% url 'friends:add_friend' %}" method="POST">
+                <div class="form-group">
+                    <label for="new_friend">Username:</label>
+                    <input type="text" class="form-control" id="new_friend" name="new_friend" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-screecher">
+                    Send
+                </button>
+            </form>
+        </div>
+    </div>
+    {% if sent_requests %}
+        <div class="card">
+            <div class="card-header">
+                Sent friend requests:
+            </div>
+            <div class="card-body" style="margin-bottom: -20px">
+                {% for fsr in sent_requests %}
+                    <div class="card">
+                        <div class="card-header card-header-screecher">
+                            <div>
+                                Friend request sent to <b>{{ fsr.requested.username }}</b>:
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {{ fsr.message|linebreaksbr }}
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-danger" id="revoke-{{ fsr.requested.username }}">
+                                <i class="fa fa-fw fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <script src="{% static 'friends/js/requests_utils.js' %}"></script>
+
+{% endblock %}

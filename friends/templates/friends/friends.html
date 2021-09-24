@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+    {% load profile_extras %}
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher active" href="{% url 'friends:index' %}">Friendlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher" href="{% url 'friends:requests' %}">Outgoing requests</a>
+        </li>
+    </ul>
+
+    <div class="card">
+        <div class="card-header">Your friends:</div>
+        <div class="card-body">
+            <ul id="friendlist" class="list-group"></ul>
+        </div>
+    </div>
+
+    {% if pending_requests %}
+        <div class="card">
+            <div class="card-header">
+                Friend requests:
+            </div>
+            <div class="card-body" style="margin-bottom: -20px">
+                {% for fsr in pending_requests %}
+                    <div class="card">
+                        <div class="card-header card-header-screecher">
+                            <div>
+                                <img class="profile-pic" src="{{ PROFILE_PICTURES|get:fsr.requester.id }}">
+                                <b>{{ fsr.requester.username }}</b> wants to be your friend and sent this message:
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {{ fsr.message|linebreaksbr }}
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-screecher" id="accept-{{ fsr.requester.username }}">
+                                Accept
+                            </button>
+                            <button type="button" class="btn btn-danger" id="decline-{{ fsr.requester.username }}">
+                                Decline
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <input type="hidden" id="tokens" name="tokens" value="helloAll" required>
+    <script src="{% static 'friends/js/friends_utils.js' %}"></script>
+    <script src="{% url 'friends:friend_script' %}"></script>
+
+{% endblock %}

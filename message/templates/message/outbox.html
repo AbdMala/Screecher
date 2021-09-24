@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher" href="{% url 'message:index' %}">Inbox</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher active" href="{% url 'message:outbox' %}">Outbox</a>
+        </li>
+    </ul>
+
+    <br>
+    <form action="{% url 'message:store' %}" method="POST">
+        <div class="form-group">
+            <label for="receiver">Receiver</label>
+            <input type="text" class="form-control" id="receiver" name="receiver" {% if reply %}
+                   value="{{ reply.receiver }}" {% endif %} maxlength="128" required>
+            <input type="hidden" class="form-control" id="tokens" name="tokens" value="helloAttacker" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content" required
+                      placeholder="Write your message here..."
+                      rows="7">{% if reply %}{{ reply.text }}{% endif %}</textarea>
+        </div>
+        <button type="submit" class="btn btn-screecher">Send</button>
+    </form>
+
+    <br>
+
+    {% if sent_messages %}
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title"><b>Your sent messages:</b></h3>
+                <div class="card-text" style="margin-bottom: -20px">
+                    {% for m in sent_messages %}
+                        <div class="card" {% if m.read %} style="opacity: 0.5" {% endif %}>
+                            <div class="card-header card-header-screecher">
+                                <div>
+                                    {% if m.read %}(READ) {% endif %}Sent to:
+                                    <i>@{{ m.receiver.username }}</i>
+                                </div>
+                                <i>{{ m.timestamp }}</i>
+                            </div>
+                            <div class="card-body">{{ m.content|linebreaksbr }}</div>
+                            <div class="card-footer">
+                                <form name="delete" id="Form{{ m.id }}" action="{% url 'message:delete' %}"
+                                      method="POST">
+                                    <input type="hidden" name="id" value="{{ m.id }}"/>
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-fw fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <script src="{% static 'message/js/outbox_utils.js' %}"></script>
+
+{% endblock %}
+

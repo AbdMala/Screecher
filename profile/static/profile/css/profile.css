@@ -1,0 +1,39 @@
+#profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-pic-form {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic-wrapper {
+    display: flex;
+    align-items: center
+}
+
+.profile-pic {
+    border-radius: 50%;
+    border: 5px solid #343a40;
+    margin-right: 12px;
+    width: 100px;
+    height: 100px;
+    background: white;
+}
+
+.profile-pic-input {
+    padding: 3px;
+}
+
+.btn-input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}

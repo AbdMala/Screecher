@@ -1,0 +1,11 @@
+{
+	"id": 2,
+	"name": "Broken Wing",
+	"description": "Today, it might seem to you as if all your luck has completely run out. Perhaps you metaphorically even broke your wing, and feel like you cannot fly anymore. But even so, you show once more how well you can learn even from such bad experiences. Use your new knowledge to outsmart all the other owls.",
+		"stats": {
+		"Luck": 1,
+		"Insight": 7,
+		"Owlyness": 8,
+		"Love": 5
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"id": 6,
+	"name": "All-Seeing Eye",
+	"description": "It appears you have made a marvelous trade with the gods of the underworld. For nothing more than your soul, they have granted you wisdom and knowledge beyond the perimeters of any lesser mortal owl. You may now use this power to your heart's content. Perhaps you shall even be able to rule the world!",
+		"stats": {
+		"Luck": 7,
+		"Insight": 9,
+		"Owlyness": 1,
+		"Love": 2
+	}
+}

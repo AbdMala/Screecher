@@ -1,0 +1,11 @@
+{
+	"id": 0,
+	"name": "Infinite Emptiness",
+	"description": "Today, you are feeling a little bit lost within the darkness and have lost track of the light. However, you need not fear, as this is only a temporary burden. To the contrary, you can even profit from this: the darkness has gifted you an enormous amount of luck. Use it to win the lottery, and then do as the darkness wishes: donate your wins to Screecher.",
+	"stats": {
+		"Luck": 8,
+		"Insight": 2,
+		"Owlyness": 4,
+		"Love": 3
+	}
+}

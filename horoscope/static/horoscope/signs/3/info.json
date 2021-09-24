@@ -1,0 +1,11 @@
+{
+	"id": 3,
+	"name": "Jagged Feather",
+	"description": "You are full of energy and feel like you could achieve absolutely anything today in your owly life! With this motivation comes great compassion and you feel much more bound to your owl friends than usual. However, be careful, as your over-motivation may cause you to hurt other innocent owls by accident.",
+		"stats": {
+		"Luck": 5,
+		"Insight": 5,
+		"Owlyness": 9,
+		"Love": 8
+	}
+}

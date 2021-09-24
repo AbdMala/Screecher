@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+    {% load profile_extras %}
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher{% if public %} active{% endif %}" href="{% url 'screech:index' %}">
+                Public
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-screecher{% if not public %} active{% endif %}"
+               href="{% url 'screech:private' %}">
+                Private
+            </a>
+        </li>
+    </ul>
+
+    <div class="card">
+        <h5 class="card-header">Leave a {% if public %}public{% else %}private{% endif %} Screech:</h5>
+        <div class="card-body">
+            <form method="POST"
+                  action="{% if public %}{% url 'screech:store_public' %}{% else %}{% url 'screech:store_private' %}{% endif %}">
+                <div class="form-group">
+                    <textarea id="screech_area" name="screech_area" class="form-control" rows="3" required></textarea>
+                </div>
+                <button class="btn btn-screecher" id="submit" type="submit" style="float: right;">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+    {% for s in screeches %}
+        <div class="card" id="{{ s.id }}">
+            <div class="card-header card-header-screecher">
+                <div>
+                    <img class="profile-pic" src="{{ PROFILE_PICTURES|get:s.user.id }}">
+                    <b> {{ s.user.get_full_name }}</b>
+                    <i id="UserForScreech{{ s.id }}" style="opacity: 0.5">@{{ s.user.username }}</i>
+                </div>
+                <i>{{ s.date }}</i>
+            </div>
+            <div class="card-body">{{ s.content|linebreaksbr }}</div>
+            {% if public %}
+                <div class="card-footer">
+                    <a class="btn btn-screecher btn-rescreech" href="#">ReScreech</a>
+                    <a class="btn btn-screecher btn-comment" href="#">Comment</a>
+                </div>
+            {% endif %}
+        </div>
+        <br>
+    {% endfor %}
+
+    <script src="{% static 'screech/js/utils.js' %}"></script>
+
+{% endblock %}
