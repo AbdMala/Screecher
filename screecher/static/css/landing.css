@@ -1,0 +1,20 @@
+body {
+    background-image: url("/static/img/background-landing.jpg");
+    background-size: cover;
+}
+
+.login-dialog {
+    margin: 15% 0% 0% 10%;
+    width: 35%;
+}
+
+.register-dialog {
+    margin: 10% 0% 0% 10%;
+    width: 35%;
+}
+
+.login-ico {
+    width: 3em;
+    height: 3em;
+    margin-left: 25%;
+}

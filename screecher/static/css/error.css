@@ -1,0 +1,42 @@
+body {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.error-box {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.error-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.error {
+    font-size: 75px;
+    font-weight: bold;
+}
+
+.error-code {
+    font-size: 75px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.error-body {
+    margin: 3vh 0;
+    font-size: 30px;
+    text-align: center;
+}

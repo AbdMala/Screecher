@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load static %}
+
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+
+    <div class="app-previews">
+        <div class="app-preview">
+            <div>
+                <h3>Welcome to Screecher!</h3>
+                <p>
+                    Welcome to Screecher, the newest, greatest, bestest creation of the developer team from
+                    <i>Screecher Inc.</i> and its amazing CEO Sten Bock!
+                    <br>
+                    Screecher is not only a social network, but rather an owl-tastic world of entertainment, friendship
+                    and fun. On this <a href="{% url 'index' %}">homepage</a> all functionalities of Screecher are
+                    presented one by one. Have a look at all the many great features, which allow you to do all kinds of
+                    fun and interesting activities, some of them even with your friends! Connect yourself to other
+                    fellow <i>Screechers</i> to have a great time together! There are even rumors that Screecher might
+                    gain some more additional cool functionalities every now and then...
+                </p>
+            </div>
+            <div style="margin-left: 5vh">
+                <img class="logo" src="{% static 'img/screecher.png' %}">
+            </div>
+        </div>
+        {% for app in APPS %}
+            {% if forloop.counter0|divisibleby:2 %}
+                <div class="app-preview">
+                    <div style="margin-right: 5vh">
+                        <img class="logo" src="{% static app|add:'/img/logo.png' %}">
+                    </div>
+                    <div>
+                        <h3>{{ app|title|cut:"_" }}</h3>
+                        {% include app|add:'/description.html' %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="app-preview">
+                    <div>
+                        <h3>{{ app|title|cut:"_" }}</h3>
+                        {% include app|add:'/description.html' %}
+                    </div>
+                    <div style="margin-left: 5vh">
+                        <img class="logo" src="{% static app|add:'/img/logo.png' %}">
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+.app-previews {
+    margin: 0 3vh 1vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+}
